@@ -53,18 +53,18 @@ This project was built as a learning tool for the [Software Development Lifecycl
   <tbody>
     <tr>
       <td><strong>The Splash Screen</strong></td>
-      <td><img src="assets/images/screenshots/darkmode/splash_screen_dark.png" alt="The Splash Screen [Dark Mode]..." width="390" height="390"><br><em>Dark Mode</em></td>
-      <td><img src="assets/images/screenshots/lightmode/splash_screen_light.png" alt="The Splash Screen [Light Mode]..." width="390" height="390"><br><em>Light Mode</em></td>
+      <td><img src="assets/images/screenshots/darkmode/splash_screen_dark.png" alt="The Splash Screen [Dark Mode]..." width="390"><br><em>Dark Mode</em></td>
+      <td><img src="assets/images/screenshots/lightmode/splash_screen_light.png" alt="The Splash Screen [Light Mode]..." width="390"><br><em>Light Mode</em></td>
     </tr>
     <tr>
       <td><strong>The Secrets Scan Screen [Pre-Scan]</strong></td>
-      <td><img src="assets/images/screenshots/darkmode/secrets_scan_pre_dark.png" alt="The Secrets Scan Pre-Scan [Dark Mode]..." width="390" height="390"><br><em>Dark Mode</em></td>
-      <td><img src="assets/images/screenshots/lightmode/secrets_scan_pre_light.png" alt="The Secrets Scan Pre-Scan [Light Mode]..." width="390" height="390"><br><em>Light Mode</em></td>
+      <td><img src="assets/images/screenshots/darkmode/secrets_scan_pre_dark.png" alt="The Secrets Scan Pre-Scan [Dark Mode]..." width="390"><br><em>Dark Mode</em></td>
+      <td><img src="assets/images/screenshots/lightmode/secrets_scan_pre_light.png" alt="The Secrets Scan Pre-Scan [Light Mode]..." width="390"><br><em>Light Mode</em></td>
     </tr>
     <tr>
       <td><strong>The Secrets Scan Screen [Post-Scan]</strong></td>
-      <td><img src="assets/images/screenshots/darkmode/secrets_scan_post_dark.png" alt="The Secrets Scan Post-Scan [Dark Mode]..." width="390" height="390"><br><em>Dark Mode</em></td>
-      <td><img src="assets/images/screenshots/lightmode/secrets_scan_post_light.png" alt="The Secrets Scan Post-Scan [Light Mode]..." width="390" height="390"><br><em>Light Mode</em></td>
+      <td><img src="assets/images/screenshots/darkmode/secrets_scan_post_dark.png" alt="The Secrets Scan Post-Scan [Dark Mode]..." width="390"><br><em>Dark Mode</em></td>
+      <td><img src="assets/images/screenshots/lightmode/secrets_scan_post_light.png" alt="The Secrets Scan Post-Scan [Light Mode]..." width="390"><br><em>Light Mode</em></td>
     </tr>
   </tbody>
 </table>
