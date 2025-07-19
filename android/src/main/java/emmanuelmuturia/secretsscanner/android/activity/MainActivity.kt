@@ -25,9 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import cafe.adriel.voyager.navigator.Navigator
 import emmanuelmuturia.secretsscanner.android.theme.SecretsScannerTheme
-import emmanuelmuturia.secretsscanner.home.ui.screens.SecretsScannerHomeScreen
-import emmanuelmuturia.secretsscanner.home.ui.viewmodel.SecretsScannerHomeScreenViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import emmanuelmuturia.secretsscanner.secretscanner.ui.screens.SecretsScannerScreen
 
 /**
  * This the main [android.app.Activity] of the project...
@@ -44,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background,
                 ) {
                     Navigator(
-                        screen = SecretsScannerHomeScreen(),
+                        screen = SecretsScannerScreen(),
                     )
                 }
             }

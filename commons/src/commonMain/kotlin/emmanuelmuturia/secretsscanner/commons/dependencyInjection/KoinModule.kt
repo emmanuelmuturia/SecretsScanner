@@ -15,7 +15,7 @@
  */
 package emmanuelmuturia.secretsscanner.commons.dependencyInjection
 
-import emmanuelmuturia.secretsscanner.home.ui.dependencyInjection.secretsScannerUIKoinModule
+import emmanuelmuturia.secretsscanner.secretscanner.ui.dependencyInjection.secretsScannerUIKoinModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 

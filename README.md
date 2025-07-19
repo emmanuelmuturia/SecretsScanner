@@ -1,14 +1,14 @@
-# [Project Name]
+# Secrets Scanner
 
 <div style="text-align: center;">
 
-[Image Path goes here...]...
+![The Secrets Scanner Logo](assets/images/logo/logo.png)
 
 </div>
 
 ## Overview
 
-[What is this project about?]...
+Secrets Scanner is a dummy Kotlin Multiplatform [KMP] Mobile App that scans for Secrets, kinda like Gitleaks......
 
 ## Table of Contents
 
@@ -22,9 +22,7 @@
 
 ## 1] Background
 
-[The Excalidraw Design goes here...]...
-
-[The Background goes here in the form of bullet points...]...
+This project was built as a learning tool for the [Software Development Lifecycle [SDLC]](https://tryhackme.com/room/sdlc) module in [TryHackMe](http://tryhackme.com/)...
 
 ## 2] Architecture
 
@@ -44,99 +42,87 @@
 
 ## 3] Screenshots
 
-- THIS IS A SAMPLE "SCREENSHOTS" BLOCK:
-
 <div style="text-align: center;">
 
-<table>
-  <tr>
-    <th>The Splash Screen</th>
-    <th>The Bookshelf Screen</th>
-    <th>The Bookshelf Details Screen</th>
-  </tr>
-  <tr>
-    <td>
-      <img src="assets/images/screenshots/splash_screen.png" alt="The Splash Screen" style="max-width:490px; height:490px;">
-    </td>
-    <td>
-      <img src="assets/images/screenshots/bookshelf_screen.png" alt="The Bookshelf Screen" style="max-width:490px; height:490px;">
-    </td>
-    <td>
-      <img src="assets/images/screenshots/bookshelf_details_screen.png" alt="The Bookshelf Details Screen" style="max-width:490px; height:490px;">
-    </td>
-  </tr>
-</table>
+  <table style="margin: 0 auto; border-collapse: collapse;">
+    <tr>
+      <th></th>
+      <th style="padding: 10px;">Dark Mode</th>
+      <th style="padding: 10px;">Light Mode</th>
+    </tr>
+
+    <tr>
+      <td style="font-weight: bold; padding: 10px;">The Splash Screen</td>
+      <td>
+        <img src="assets/images/screenshots/darkmode/splash_screen_dark.png" alt="The Splash Screen [Dark Mode]" style="max-width: 390px; height: 390px;">
+      </td>
+      <td>
+        <img src="assets/images/screenshots/lightmode/splash_screen_light.png" alt="The Splash Screen [Light Mode]" style="max-width: 390px; height: 390px;">
+      </td>
+    </tr>
+
+    <tr>
+      <td style="font-weight: bold; padding: 10px;">The Secrets Scan Screen [Pre-Scan]</td>
+      <td>
+        <img src="assets/images/screenshots/darkmode/secrets_scan_pre_dark.png" alt="The Secrets Scan Pre-Scan [Dark Mode]" style="max-width: 390px; height: 390px;">
+      </td>
+      <td>
+        <img src="assets/images/screenshots/lightmode/secrets_scan_pre_light.png" alt="The Secrets Scan Pre-Scan [Light Mode]" style="max-width: 390px; height: 390px;">
+      </td>
+    </tr>
+
+    <tr>
+      <td style="font-weight: bold; padding: 10px;">The Secrets Scan Screen [Post-Scan]</td>
+      <td>
+        <img src="assets/images/screenshots/darkmode/secrets_scan_post_dark.png" alt="The Secrets Scan Post-Scan [Dark Mode]" style="max-width: 390px; height: 390px;">
+      </td>
+      <td>
+        <img src="assets/images/screenshots/lightmode/secrets_scan_post_light.png" alt="The Secrets Scan Post-Scan [Light Mode]" style="max-width: 390px; height: 390px;">
+      </td>
+    </tr>
+  </table>
 
 </div>
 
 ## 4] Testing
 
-- THIS IS A SAMPLE "TESTING" BLOCK:
-
-| Test                                                                                                        | Description                               |
-|-------------------------------------------------------------------------------------------------------------|-------------------------------------------|
-| ![The Home Screen ViewModel Test](assets/images/screenshots/tests/viewmodel/home_screen_viewmodel_test.png) | This is The Home Screen ViewModel Test... |
-| ![The Home Screen UI Test](assets/images/screenshots/tests/ui/home_screen_ui_test.png)                      | This is The Home Screen UI Test...        |
-| ![The Craft Silicon DAO Test](assets/images/screenshots/tests/dao/craft_silicon_dao_test.png)               | This is The Craft Silicon DAO Test...     |
+| Test                                                        | Description                       |
+|-------------------------------------------------------------|-----------------------------------|
+| ![The Snyk Security Test](assets/images/tests/security.png) | This is The Snyk Security Test... |
 
 ## 5] Challenges and Solutions
 
-- THIS IS A SAMPLE "CHALLENGES AND SOLUTIONS" BLOCK:
-
-- The Bookshelf Project was designed to offer a smooth experience across Architecture, Networking, and User Interaction Layers...
-- However, like many modern Mobile Apps, it encountered several challenges during development:
-
-### a] Glide URL Failure and Image Loading Issues
-
-**Challenge:**
-Glide failed to load Book Thumbnails due to malformed Image URLs (e.g. `httpss://...`) and Dimension Warnings such as `[536x-2147483648]`...
-
-**Solution:**
-The issue was traced back to a simple typo in the Image URL Scheme. The problem was fixed by ensuring the URLs used the correct `https://` scheme before passing them into the Image Loader. The library was then replaced with [Landscapist-Coil3](https://github.com/skydoves/landscapist) for Kotlin Multiplatform compatibility and better Lifecycle Handling...
+While the project highlights modern practices in Secure UI Design, SDLC-aligned Architecture, and Secrets Detection Simulation, several development challenges emerged:
 
 ---
 
-### b] Implementing a Search Bar on Top of a Staggered Grid
+### a] Visualizing The Scan Process Across Two States [Pre and Post]
 
 **Challenge:**
-Placing a `SearchBar` above a `LazyVerticalStaggeredGrid` while maintaining smooth scrolling and preserving state...
+The Mobile App was meant to simulate a "Scan" process — one screen showing a `Pre-Scan` state, and another screen reflecting the `Post-Scan` result, while maintaining visual consistency and clear feedback cues...
 
 **Solution:**
-A `Column` layout was introduced, placing the `SearchBar` at the top and the `LazyVerticalStaggeredGrid` beneath it. Proper Padding and Layout Constraints were applied to prevent Content Clipping and Scroll Overlap...
+The Screens were designed with Jetpack Compose using a `Sealed Class` to represent UI States: `Success` and `Error`. Transitions between them were animated using `AnimatedVisibility` and `delay()` to simulate the scan. For a better User Experience [UX], relevant Icons, Status Text, and Background Colour were used to reflect changes between UI States...
 
 ---
 
-### c] Asynchronous Search with Query-Driven API and Room Sync
+### b] Designing for Light Mode and Dark Mode
 
 **Challenge:**
-Search functionality needed to hit the REST API only when a user submitted a Book Query, and update the local Room DB accordingly—replacing old data...
+Ensuring that both Light Mode and Dark Mode versions of the Mobile App remained visually coherent, with readable content and consistent Design Patterns, was difficult. Colors that worked in Light Mode did not always provide good contrast in Dark Mode, and vice versa...
 
 **Solution:**
-An architecture was designed where the `ViewModel` triggered the repository’s `searchBook(query)` method. This, in turn, called a Suspending Function that:
-1. Deleted previous Room entries...
-2. Made a fresh API call...
-3. Inserted the new results into Room...
-   The UI then updated through Flow collection using `collectAsStateWithLifecycle()`...
+Two themes were created and leveraged Material 3’s Dynamic Theming. Icons and Text Colours were adjusted using Conditional Styling based on the current System Theme, improving overall Readability and Visual Clarity in both modes...
 
 ---
 
-### d] Sequential Execution of Suspending Functions
+### c] Embedding Screenshots for Dual-Theme Documentation
 
 **Challenge:**
-Ensuring that Suspending Functions such as `searchBooks()` and `getBooks()` execute in a defined order, especially during a Search operation...
+Both Light Mode and Dark Mode screenshots were to be presented for each Screen [Splash, Pre-Scan, and Post-Scan] in a clean and understandable layout for Documentation purposes...
 
 **Solution:**
-`withContext(dispatcher)` ensured the code block's Suspend Functions were executed sequentially. The `searchBook()` call was always followed by `getBooks()` within the same coroutine in the `ViewModel`...
-
----
-
-### e] ViewModel State Not Updating After Search
-
-**Challenge:**
-Initial attempts to call `searchBooks()` without subsequently updating the UI resulted in stale data being shown...
-
-**Solution:**
-The solution was to call `getBooks()` after `searchBooks()` in the `ViewModel`, ensuring the State Flow was refreshed after new data was written to Room...
+A two-column, three-row HTML Table was built with aligned Titles and embedded Screenshots using `<img>` Tags and Inline Styling. This showcased both User Interface [UI] Themes side by side, aiding Project Presentation and enhancing Documentation Clarity for viewers reading through the GitHub README...
 
 ---
 
@@ -160,67 +146,39 @@ d] [Koin](https://insert-koin.io/)
 
 - For Dependency Injection, the project uses [Koin]—a pragmatic Kotlin-native library that powers both ViewModels and Composables with Lifecycle-aware scoped Injection...
 
-e] [KSP](https://kotlinlang.org/docs/ksp-overview.html)
-
-- Kotlin Symbol Processing [KSP] is used in the project as a faster and lightweight alternative to Kotlin Annotation Processing Tool [KAPT] for generating code at compile time...
-
-f] [Ktor](https://ktor.io/)
-
-- Ktor Client is used to perform type-safe HTTP network calls including Serialisation and Content Negotiation using JSON...
-
-g] [OkHttp3](https://square.github.io/okhttp/)
-
-- Underlying the Ktor engine is [OkHttp3], which enhances the Networking Layer with Interceptors, Efficient Connection Pooling, and Logging Capabilities...
-
-h] [Kotlinx Serialization](https://kotlinlang.org/docs/serialization.html)
-
-- This plugin powers all Serialization and Deserialization operations within Ktor calls, transforming JSON responses into strongly typed Kotlin objects...
-
-i] [Room](https://developer.android.com/jetpack/androidx/releases/room)
-
-- For Local Data Persistence, Room has been implemented to store Book Data and manage Queries using DAO Interfaces...
-
-j] [SQLite Bundled](https://developer.android.com/jetpack/androidx/releases/sqlite)
-
-- The SQLite Bundled library provides the underlying Database Engine optimised for Room and enhances Cross-Platform compatibility...
-
-k] [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
+e] [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 
 - The project leverages Kotlin Coroutines to handle background tasks such as Network Calls, Room Queries, and Suspending Functions elegantly...
 
-l] [Landscapist-Coil3](https://github.com/skydoves/landscapist)
-
-- Landscapist-Coil3 has been adopted to asynchronously load and display Book Thumbnails using [Coil3](https://coil-kt.github.io/coil/upgrading_to_coil3/) under the hood...
-
-m] [Android SplashScreen API](https://developer.android.com/develop/ui/views/launch/splash-screen)
+f] [Android SplashScreen API](https://developer.android.com/develop/ui/views/launch/splash-screen)
 
 - A modern SplashScreen API implementation is used to display a consistent launch experience that blends seamlessly into the app's theme...
 
-n] [Google Fonts for Compose](https://developer.android.com/jetpack/compose/text/fonts)
+g] [Google Fonts for Compose](https://developer.android.com/jetpack/compose/text/fonts)
 
 - Google Fonts integration enables custom Typography using Jetpack Compose's Typography styles with support for scalable and legible fonts...
 
-o] [Timber](https://github.com/JakeWharton/timber)
+h] [Timber](https://github.com/JakeWharton/timber)
 
 - Timber is utilised as a lightweight, extensible Logging library for Debugging and Diagnostic Logging across the codebase...
 
-p] [Detekt](https://detekt.dev/)
+i] [Detekt](https://detekt.dev/)
 
 - Detekt is configured to statically analyse Kotlin code and enforce clean code practices for Maintainability and Scalability...
 
-q] [Ktlint](https://github.com/pinterest/ktlint)
+j] [Ktlint](https://github.com/pinterest/ktlint)
 
 - Ktlint enforces Kotlin code style based on official guidelines and integrates into the build process to maintain consistency...
 
-r] [Spotless](https://github.com/diffplug/spotless)
+k] [Spotless](https://github.com/diffplug/spotless)
 
 - Spotless ensures source Code Formatting and Linting are applied before commits, further automating Code Quality...
 
-s] [SonarQube for IDE](https://plugins.jetbrains.com/plugin/7973-sonarqube-for-ide)
+l] [SonarQube for IDE](https://plugins.jetbrains.com/plugin/7973-sonarqube-for-ide)
 
 - The SonarQube for IDE Plugin has been integrated to provide real-time Static Code Analysis, enabling early detection of Code Smells and Technical Debt...
 
-t] [Snyk](https://plugins.jetbrains.com/plugin/10804-snyk-security)
+m] [Snyk](https://plugins.jetbrains.com/plugin/10804-snyk-security)
 
 - The Snyk Plugin has been added to identify and remediate Security Vulnerabilities in Third-Party dependencies during Development...
 
@@ -241,15 +199,3 @@ t] [Snyk](https://plugins.jetbrains.com/plugin/10804-snyk-security)
 5] Once done, connect your Android Device to Android Studio by navigating to "Device Manager". You can also create an Emulator instead of using a physical Android Device...
 
 6] Run the app by clicking "Run 'app'"...
-
-## Please Do Not Forget
-
-- Replace these: `Color.kt`, `bookshelf.png` [Drawable for Splash Screen], and The Mobile App Icon [Mipmaps]...
-
-## 🔐 Required GitHub Secrets
-
-| Secret Name        | Description                                          |
-|--------------------|------------------------------------------------------|
-| `SNYK_TOKEN`       | For Snyk Security Scans...                           |
-| `API_KEY`          | App-specific API Key...                              |
-| `APPSWEEP_API_KEY` | This is optional [For uploading APKs to AppSweep]... |
