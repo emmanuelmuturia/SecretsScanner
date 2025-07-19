@@ -18,7 +18,6 @@ package emmanuelmuturia.secretsscanner.android.application
 import android.app.Application
 import emmanuelmuturia.secretsscanner.android.BuildConfig
 import emmanuelmuturia.secretsscanner.commons.dependencyInjection.initKoin
-import emmanuelmuturia.secretsscanner.dependencyInjection.sampleAndroidKoinModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import timber.log.Timber
@@ -39,7 +38,7 @@ class SecretsScannerApplication : Application() {
             modules(
                 modules =
                     listOf(
-                        sampleAndroidKoinModule,
+
                     ),
             )
         }

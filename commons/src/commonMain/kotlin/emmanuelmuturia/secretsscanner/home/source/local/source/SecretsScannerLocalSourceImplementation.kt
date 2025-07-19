@@ -17,6 +17,7 @@ package emmanuelmuturia.secretsscanner.home.source.local.source
 
 import emmanuelmuturia.secretsscanner.home.source.local.entity.ProjectFileEntity
 import emmanuelmuturia.secretsscanner.home.source.local.entity.ScanResultEntity
+import emmanuelmuturia.secretsscanner.home.source.local.extras.SecretMatchType
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -31,33 +32,38 @@ class SecretsScannerLocalSourceImplementation(
 ) : SecretsScannerLocalSource {
     override suspend fun scanForSecrets(
         files: List<ProjectFileEntity>
-    ): Flow<List<ScanResultEntity>> {
-        return withContext(context = coroutineDispatcher) {
-            val results = mutableListOf<ScanResultEntity>()
+    ): Flow<List<ScanResultEntity>> = withContext(context = coroutineDispatcher) {
+        val results = mutableListOf<ScanResultEntity>()
 
-            for (file in files) {
-                for (pattern in secretPatterns) {
-                    val matches = pattern.findAll(input = file.content)
+        for (file in files) {
+            val lines = file.content.lines()
+            for ((lineNumber, line) in lines.withIndex()) {
+                for ((regex, matchType) in secretPatternsWithType) {
+                    val matches = regex.findAll(input = line)
                     for (match in matches) {
                         results.add(
-                            element = ScanResultEntity(
-                                fileName = file.fileName,
-                                match = match.value
-                            )
+                            element =
+                                ScanResultEntity(
+                                    fileName = file.fileName,
+                                    matchedValue = match.value,
+                                    matchType = matchType,
+                                    lineNumber = lineNumber + 1,
+                                    lineContent = line.trim()
+                                )
                         )
                     }
                 }
             }
-
-            flowOf(value = results)
         }
+
+        flowOf(value = results)
     }
 }
 
-private val secretPatterns = listOf(
-    Regex(pattern = "AKIA[0-9A-Z]{16}"),          // AWS Key...
-    Regex(pattern = "AIza[0-9A-Za-z-_]{35}"),     // Google API...
-    Regex(pattern = "sk_live_[0-9a-zA-Z]{24}"),   // Stripe key...
-    Regex(pattern = "(?i)password\\s*=\\s*.+"),   // Password...
-    Regex(pattern = "(?i)api[_-]?key\\s*=\\s*.+") // API Key...
+private val secretPatternsWithType = listOf(
+    Regex(pattern = "AKIA[0-9A-Z]{16}") to SecretMatchType.AWS,
+    Regex(pattern = "AIza[0-9A-Za-z-_]{35}") to SecretMatchType.GOOGLE,
+    Regex(pattern = "sk_live_[0-9a-zA-Z]{24}") to SecretMatchType.STRIPE,
+    Regex(pattern = "(?i)password\\s*=\\s*.+") to SecretMatchType.PASSWORD,
+    Regex(pattern = "(?i)api[_-]?key\\s*=\\s*.+") to SecretMatchType.API_KEY,
 )

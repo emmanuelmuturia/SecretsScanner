@@ -99,7 +99,9 @@ class SecretsScannerHomeScreen() : Screen {
                 FloatingActionButton(
                     onClick = {
                         secretsScannerHomeScreenViewModel.scanFiles()
-                    }
+                    },
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary,
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Refresh,
@@ -153,7 +155,7 @@ private fun SecretsScannerHomeScreenContent(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(top = 70.dp)
         ) {
             items(items = secretsScannerHomeScreenUIState.scanResults) { result ->
                 ScanResultItem(scanResult = result)
@@ -171,11 +173,31 @@ private fun SecretsScannerHomeScreenContent(
                 Text(
                     text = "No scan results yet.",
                     style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             }
         }
     }
+
+    AnimatedVisibility(
+        visible = !secretsScannerHomeScreenUIState.isLoading &&
+            secretsScannerHomeScreenUIState.error == null &&
+            secretsScannerHomeScreenUIState.scanResults.isEmpty()
+    ) {
+        Box(
+            modifier = modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "No scan results yet.\nTap the refresh icon to begin.",
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+        }
+    }
+
 }
 
 @Composable
@@ -186,14 +208,33 @@ fun ScanResultItem(scanResult: ScanResultEntity) {
             .padding(vertical = 4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface,
+            containerColor = MaterialTheme.colorScheme.surface
         )
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "File: ${scanResult.fileName}",
+                text = "📄 ${scanResult.fileName}",
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
+            )
+
+            Text(
+                text = "🔍 ${scanResult.matchType.label}",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.bodyMedium
+            )
+
+            Text(
+                text = "Line ${scanResult.lineNumber}: ${scanResult.lineContent}",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+
+            Text(
+                text = "Matched: ${scanResult.matchedValue}",
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.Medium,
+                color = MaterialTheme.colorScheme.primary
             )
         }
     }
