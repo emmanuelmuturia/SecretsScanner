@@ -15,6 +15,8 @@
  */
 package emmanuelmuturia.secretsscanner.home.source.local.source
 
+import emmanuelmuturia.secretsscanner.home.source.local.entity.ProjectFileEntity
+import emmanuelmuturia.secretsscanner.home.source.local.entity.ScanResultEntity
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -22,5 +24,7 @@ import kotlinx.coroutines.flow.Flow
  */
 
 interface SecretsScannerLocalSource {
-    
+    suspend fun scanForSecrets(
+        files: List<ProjectFileEntity>
+    ): Flow<List<ScanResultEntity>>
 }
