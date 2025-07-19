@@ -163,23 +163,6 @@ private fun SecretsScannerHomeScreenContent(
         }
     }
 
-    AnimatedVisibility(visible = secretsScannerHomeScreenUIState.scanResults.isEmpty()) {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(all = 16.dp)
-        ) {
-            item {
-                Text(
-                    text = "No scan results yet.",
-                    style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-            }
-        }
-    }
-
     AnimatedVisibility(
         visible = !secretsScannerHomeScreenUIState.isLoading &&
             secretsScannerHomeScreenUIState.error == null &&
@@ -190,7 +173,7 @@ private fun SecretsScannerHomeScreenContent(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "No scan results yet.\nTap the refresh icon to begin.",
+                text = "No scan results yet...\nTap the refresh icon to begin...",
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onBackground
@@ -206,7 +189,7 @@ fun ScanResultItem(scanResult: ScanResultEntity) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 7.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         )
