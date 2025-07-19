@@ -15,10 +15,13 @@
  */
 package emmanuelmuturia.secretsscanner.home.data.repository
 
+import emmanuelmuturia.secretsscanner.home.source.local.entity.ScanResultEntity
+import kotlinx.coroutines.flow.Flow
+
 /**
  * This is the Home feature's Repository that abstracts the Data Sources' implementations...
  */
 
 interface SecretsScannerRepository {
-    suspend fun scanForSecrets()
+    suspend fun scanForSecrets(): Flow<List<ScanResultEntity>>
 }

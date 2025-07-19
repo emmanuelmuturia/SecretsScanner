@@ -16,7 +16,6 @@
 package emmanuelmuturia.secretsscanner.home.ui.dependencyInjection
 
 import emmanuelmuturia.secretsscanner.home.data.dependencyInjection.secretsScannerDataKoinModule
-import emmanuelmuturia.secretsscanner.home.ui.viewmodel.SecretsScannerDetailsScreenViewModel
 import emmanuelmuturia.secretsscanner.home.ui.viewmodel.SecretsScannerHomeScreenViewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
@@ -29,8 +28,6 @@ val secretsScannerUIKoinModule =
     module {
 
         viewModelOf(::SecretsScannerHomeScreenViewModel)
-
-        viewModelOf(::SecretsScannerDetailsScreenViewModel)
 
         includes(
             module =

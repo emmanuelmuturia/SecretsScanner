@@ -20,8 +20,11 @@ import androidx.lifecycle.viewModelScope
 import emmanuelmuturia.secretsscanner.commons.state.SecretsScannerResult
 import emmanuelmuturia.secretsscanner.commons.state.asResult
 import emmanuelmuturia.secretsscanner.home.data.repository.SecretsScannerRepository
+import emmanuelmuturia.secretsscanner.home.source.local.entity.ScanResultEntity
 import emmanuelmuturia.secretsscanner.home.ui.state.SecretsScannerHomeScreenUIState
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -32,56 +35,36 @@ import kotlinx.coroutines.launch
 class SecretsScannerHomeScreenViewModel(
     private val secretsScannerRepository: SecretsScannerRepository,
 ) : ViewModel() {
-    val secretsScannerHomeScreenUIState = MutableStateFlow(value = SecretsScannerHomeScreenUIState())
 
-    init {
-        getSamples()
-    }
+    val secretsScannerUIState = MutableStateFlow(value = SecretsScannerHomeScreenUIState())
 
-    fun getSamples() {
-        secretsScannerHomeScreenUIState.update { it.copy(isLoading = true) }
+    fun scanFiles() {
         viewModelScope.launch {
-            secretsScannerRepository.getSamples().asResult().collect { result ->
+            secretsScannerUIState.update { it.copy(isLoading = true) }
+            secretsScannerRepository.scanForSecrets().asResult().collect { result ->
+                when(result) {
 
-                when (result) {
                     is SecretsScannerResult.Success -> {
-                        secretsScannerHomeScreenUIState.update {
+                        secretsScannerUIState.update {
                             it.copy(
-                                samples = result.data,
-                                isLoading = false,
+                                scanResults = result.data,
+                                isLoading = false
                             )
                         }
                     }
 
                     is SecretsScannerResult.Error -> {
-                        secretsScannerHomeScreenUIState.update {
+                        secretsScannerUIState.update {
                             it.copy(
                                 error = result.error,
-                                isLoading = false,
+                                isLoading = false
                             )
                         }
                     }
+
                 }
             }
         }
     }
 
-    fun searchBooks(sampleQuery: String) {
-        viewModelScope.launch {
-            secretsScannerHomeScreenUIState.update { it.copy(isLoading = true) }
-
-            val result =
-                runCatching {
-                    secretsScannerRepository.searchForSample(sampleQuery = sampleQuery)
-                }
-
-            result.onSuccess {
-                getSamples()
-            }.onFailure { throwable ->
-                secretsScannerHomeScreenUIState.update {
-                    it.copy(error = throwable.message ?: "Unknown Error...", isLoading = false)
-                }
-            }
-        }
-    }
 }

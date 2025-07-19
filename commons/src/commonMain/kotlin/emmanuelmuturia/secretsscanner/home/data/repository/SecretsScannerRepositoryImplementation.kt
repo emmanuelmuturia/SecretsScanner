@@ -16,8 +16,10 @@
 package emmanuelmuturia.secretsscanner.home.data.repository
 
 import emmanuelmuturia.secretsscanner.home.source.local.entity.ProjectFileEntity
+import emmanuelmuturia.secretsscanner.home.source.local.entity.ScanResultEntity
 import emmanuelmuturia.secretsscanner.home.source.local.source.SecretsScannerLocalSource
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 /**
@@ -28,8 +30,8 @@ class SecretsScannerRepositoryImplementation(
     private val coroutineDispatcher: CoroutineDispatcher,
     private val secretsScannerLocalSource: SecretsScannerLocalSource,
 ) : SecretsScannerRepository {
-    override suspend fun scanForSecrets() {
-        withContext(context = coroutineDispatcher) {
+    override suspend fun scanForSecrets(): Flow<List<ScanResultEntity>> {
+        return withContext(context = coroutineDispatcher) {
             secretsScannerLocalSource.scanForSecrets(
                 files = fakeProjectFiles
             )

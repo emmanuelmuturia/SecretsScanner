@@ -35,10 +35,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val secretsScannerHomeScreenViewModel: SecretsScannerHomeScreenViewModel by viewModel()
-        installSplashScreen().setKeepOnScreenCondition {
-            secretsScannerHomeScreenViewModel.secretsScannerHomeScreenUIState.value.isLoading
-        }
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContent {
             SecretsScannerTheme {

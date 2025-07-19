@@ -15,13 +15,14 @@
  */
 package emmanuelmuturia.secretsscanner.home.ui.state
 
+import emmanuelmuturia.secretsscanner.home.source.local.entity.ScanResultEntity
+
 /**
  * This is the Home feature's Home Screen UI State...
  */
 
 data class SecretsScannerHomeScreenUIState(
-    val samples: List<Sample> = emptyList(),
+    val scanResults: List<ScanResultEntity> = emptyList(),
     val isLoading: Boolean = false,
     val error: String? = null,
-    val sampleQuery: String = "",
 )
