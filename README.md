@@ -42,51 +42,32 @@ This project was built as a learning tool for the [Software Development Lifecycl
 
 ## 3] Screenshots
 
-<div align="center">
-
-  <table style="border-collapse: collapse; margin: 0 auto;">
-    <thead>
-      <tr>
-        <th style="padding: 12px;"></th>
-        <th style="padding: 12px;">🌙 Dark Mode</th>
-        <th style="padding: 12px;">🌞 Light Mode</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td style="font-weight: bold; padding: 12px; text-align: left;">Splash Screen</td>
-        <td>
-          <img src="assets/images/screenshots/darkmode/splash_screen_dark.png" alt="Splash Screen - Dark Mode" style="max-width: 390px; height: auto;">
-        </td>
-        <td>
-          <img src="assets/images/screenshots/lightmode/splash_screen_light.png" alt="Splash Screen - Light Mode" style="max-width: 390px; height: auto;">
-        </td>
-      </tr>
-
-      <tr>
-        <td style="font-weight: bold; padding: 12px; text-align: left;">Secrets Scan (Pre-Scan)</td>
-        <td>
-          <img src="assets/images/screenshots/darkmode/secrets_scan_pre_dark.png" alt="Secrets Scan Pre-Scan - Dark Mode" style="max-width: 390px; height: auto;">
-        </td>
-        <td>
-          <img src="assets/images/screenshots/lightmode/secrets_scan_pre_light.png" alt="Secrets Scan Pre-Scan - Light Mode" style="max-width: 390px; height: auto;">
-        </td>
-      </tr>
-
-      <tr>
-        <td style="font-weight: bold; padding: 12px; text-align: left;">Secrets Scan (Post-Scan)</td>
-        <td>
-          <img src="assets/images/screenshots/darkmode/secrets_scan_post_dark.png" alt="Secrets Scan Post-Scan - Dark Mode" style="max-width: 390px; height: auto;">
-        </td>
-        <td>
-          <img src="assets/images/screenshots/lightmode/secrets_scan_post_light.png" alt="Secrets Scan Post-Scan - Light Mode" style="max-width: 390px; height: auto;">
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Dark Mode</th>
+      <th>Light Mode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>The Splash Screen</strong></td>
+      <td><img src="assets/images/screenshots/darkmode/splash_screen_dark.png" alt="The Splash Screen [Dark Mode]..." width="390" height="390"><br><em>Dark Mode</em></td>
+      <td><img src="assets/images/screenshots/lightmode/splash_screen_light.png" alt="The Splash Screen [Light Mode]..." width="390" height="390"><br><em>Light Mode</em></td>
+    </tr>
+    <tr>
+      <td><strong>The Secrets Scan Screen [Pre-Scan]</strong></td>
+      <td><img src="assets/images/screenshots/darkmode/secrets_scan_pre_dark.png" alt="The Secrets Scan Pre-Scan [Dark Mode]..." width="390" height="390"><br><em>Dark Mode</em></td>
+      <td><img src="assets/images/screenshots/lightmode/secrets_scan_pre_light.png" alt="The Secrets Scan Pre-Scan [Light Mode]..." width="390" height="390"><br><em>Light Mode</em></td>
+    </tr>
+    <tr>
+      <td><strong>The Secrets Scan Screen [Post-Scan]</strong></td>
+      <td><img src="assets/images/screenshots/darkmode/secrets_scan_post_dark.png" alt="The Secrets Scan Post-Scan [Dark Mode]..." width="390" height="390"><br><em>Dark Mode</em></td>
+      <td><img src="assets/images/screenshots/lightmode/secrets_scan_post_light.png" alt="The Secrets Scan Post-Scan [Light Mode]..." width="390" height="390"><br><em>Light Mode</em></td>
+    </tr>
+  </tbody>
+</table>
 
 ## 4] Testing
 
