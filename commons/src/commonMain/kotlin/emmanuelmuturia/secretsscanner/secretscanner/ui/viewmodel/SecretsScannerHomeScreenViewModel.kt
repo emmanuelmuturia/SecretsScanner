@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Sample
+ * Copyright 2025 Secrets Scanner
  *
  * Licenced under the Apache License, Version 2.0 (the "Licence");
  * you may not use this file except in compliance with the Licence.
@@ -32,20 +32,18 @@ import kotlinx.coroutines.launch
 class SecretsScannerHomeScreenViewModel(
     private val secretsScannerRepository: SecretsScannerRepository,
 ) : ViewModel() {
-
     val secretsScannerUIState = MutableStateFlow(value = SecretsScannerHomeScreenUIState())
 
     fun scanFiles() {
         viewModelScope.launch {
             secretsScannerUIState.update { it.copy(isLoading = true) }
             secretsScannerRepository.scanForSecrets().asResult().collect { result ->
-                when(result) {
-
+                when (result) {
                     is SecretsScannerResult.Success -> {
                         secretsScannerUIState.update {
                             it.copy(
                                 scanResults = result.data,
-                                isLoading = false
+                                isLoading = false,
                             )
                         }
                     }
@@ -54,14 +52,12 @@ class SecretsScannerHomeScreenViewModel(
                         secretsScannerUIState.update {
                             it.copy(
                                 error = result.error,
-                                isLoading = false
+                                isLoading = false,
                             )
                         }
                     }
-
                 }
             }
         }
     }
-
 }

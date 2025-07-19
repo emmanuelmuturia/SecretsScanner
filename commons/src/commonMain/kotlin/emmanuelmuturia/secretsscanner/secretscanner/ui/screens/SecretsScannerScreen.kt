@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Sample
+ * Copyright 2025 Secrets Scanner
  *
  * Licenced under the Apache License, Version 2.0 (the "Licence");
  * you may not use this file except in compliance with the Licence.
@@ -65,7 +65,7 @@ class SecretsScannerScreen() : Screen {
         val secretsScannerHomeScreenViewModel = koinViewModel<SecretsScannerHomeScreenViewModel>()
 
         val secretsScannerHomeScreenUIState: SecretsScannerHomeScreenUIState by
-        secretsScannerHomeScreenViewModel.secretsScannerUIState.collectAsStateWithLifecycle()
+            secretsScannerHomeScreenViewModel.secretsScannerUIState.collectAsStateWithLifecycle()
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
@@ -105,10 +105,10 @@ class SecretsScannerScreen() : Screen {
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Refresh,
-                        contentDescription = "Scan Files..."
+                        contentDescription = "Scan Files...",
                     )
                 }
-            }
+            },
         ) { paddingValues ->
             SecretsScannerScreenContent(
                 modifier = Modifier.padding(paddingValues = paddingValues),
@@ -123,7 +123,6 @@ private fun SecretsScannerScreenContent(
     modifier: Modifier,
     secretsScannerHomeScreenUIState: SecretsScannerHomeScreenUIState,
 ) {
-
     AnimatedVisibility(visible = secretsScannerHomeScreenUIState.isLoading) {
         Box(
             modifier =
@@ -153,9 +152,10 @@ private fun SecretsScannerScreenContent(
 
     AnimatedVisibility(visible = secretsScannerHomeScreenUIState.scanResults.isNotEmpty()) {
         LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 70.dp, start = 14.dp, end = 14.dp)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(top = 70.dp, start = 14.dp, end = 14.dp),
         ) {
             items(items = secretsScannerHomeScreenUIState.scanResults) { result ->
                 ScanResultItem(scanResult = result)
@@ -164,60 +164,62 @@ private fun SecretsScannerScreenContent(
     }
 
     AnimatedVisibility(
-        visible = !secretsScannerHomeScreenUIState.isLoading &&
-            secretsScannerHomeScreenUIState.error == null &&
-            secretsScannerHomeScreenUIState.scanResults.isEmpty()
+        visible =
+            !secretsScannerHomeScreenUIState.isLoading &&
+                secretsScannerHomeScreenUIState.error == null &&
+                secretsScannerHomeScreenUIState.scanResults.isEmpty(),
     ) {
         Box(
             modifier = modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             Text(
                 text = "No scan results yet...\nTap the \"Refresh\" icon to begin...",
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onBackground
+                color = MaterialTheme.colorScheme.onBackground,
             )
         }
     }
-
 }
 
 @Composable
 fun ScanResultItem(scanResult: ScanResultEntity) {
     ElevatedCard(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 7.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        )
+        colors =
+            CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+            ),
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = "📄 ${scanResult.fileName}",
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface
+                color = MaterialTheme.colorScheme.onSurface,
             )
 
             Text(
                 text = "🔍 ${scanResult.matchType.label}",
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
             )
 
             Text(
                 text = "Line ${scanResult.lineNumber}: ${scanResult.lineContent}",
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurface
+                color = MaterialTheme.colorScheme.onSurface,
             )
 
             Text(
                 text = "Matched: ${scanResult.matchedValue}",
                 style = MaterialTheme.typography.bodySmall,
                 fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
             )
         }
     }

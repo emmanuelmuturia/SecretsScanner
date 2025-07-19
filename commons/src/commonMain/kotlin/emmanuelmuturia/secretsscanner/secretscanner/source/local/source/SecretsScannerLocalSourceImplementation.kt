@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Sample
+ * Copyright 2025 Secrets Scanner
  *
  * Licenced under the Apache License, Version 2.0 (the "Licence");
  * you may not use this file except in compliance with the Licence.
@@ -30,40 +30,40 @@ import kotlinx.coroutines.withContext
 class SecretsScannerLocalSourceImplementation(
     private val coroutineDispatcher: CoroutineDispatcher,
 ) : SecretsScannerLocalSource {
-    override suspend fun scanForSecrets(
-        files: List<ProjectFileEntity>
-    ): Flow<List<ScanResultEntity>> = withContext(context = coroutineDispatcher) {
-        val results = mutableListOf<ScanResultEntity>()
+    override suspend fun scanForSecrets(files: List<ProjectFileEntity>): Flow<List<ScanResultEntity>> =
+        withContext(context = coroutineDispatcher) {
+            val results = mutableListOf<ScanResultEntity>()
 
-        for (file in files) {
-            val lines = file.content.lines()
-            for ((lineNumber, line) in lines.withIndex()) {
-                for ((regex, matchType) in secretPatternsWithType) {
-                    val matches = regex.findAll(input = line)
-                    for (match in matches) {
-                        results.add(
-                            element =
-                                ScanResultEntity(
-                                    fileName = file.fileName,
-                                    matchedValue = match.value,
-                                    matchType = matchType,
-                                    lineNumber = lineNumber + 1,
-                                    lineContent = line.trim()
-                                )
-                        )
+            for (file in files) {
+                val lines = file.content.lines()
+                for ((lineNumber, line) in lines.withIndex()) {
+                    for ((regex, matchType) in secretPatternsWithType) {
+                        val matches = regex.findAll(input = line)
+                        for (match in matches) {
+                            results.add(
+                                element =
+                                    ScanResultEntity(
+                                        fileName = file.fileName,
+                                        matchedValue = match.value,
+                                        matchType = matchType,
+                                        lineNumber = lineNumber + 1,
+                                        lineContent = line.trim(),
+                                    ),
+                            )
+                        }
                     }
                 }
             }
-        }
 
-        flowOf(value = results)
-    }
+            flowOf(value = results)
+        }
 }
 
-private val secretPatternsWithType = listOf(
-    Regex(pattern = "AKIA[0-9A-Z]{16}") to SecretMatchType.AWS,
-    Regex(pattern = "AIza[0-9A-Za-z-_]{35}") to SecretMatchType.GOOGLE,
-    Regex(pattern = "sk_live_[0-9a-zA-Z]{24}") to SecretMatchType.STRIPE,
-    Regex(pattern = "(?i)password\\s*=\\s*.+") to SecretMatchType.PASSWORD,
-    Regex(pattern = "(?i)api[_-]?key\\s*=\\s*.+") to SecretMatchType.API_KEY,
-)
+private val secretPatternsWithType =
+    listOf(
+        Regex(pattern = "AKIA[0-9A-Z]{16}") to SecretMatchType.AWS,
+        Regex(pattern = "AIza[0-9A-Za-z-_]{35}") to SecretMatchType.GOOGLE,
+        Regex(pattern = "sk_live_[0-9a-zA-Z]{24}") to SecretMatchType.STRIPE,
+        Regex(pattern = "(?i)password\\s*=\\s*.+") to SecretMatchType.PASSWORD,
+        Regex(pattern = "(?i)api[_-]?key\\s*=\\s*.+") to SecretMatchType.API_KEY,
+    )

@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Sample
+ * Copyright 2025 Secrets Scanner
  *
  * Licenced under the Apache License, Version 2.0 (the "Licence");
  * you may not use this file except in compliance with the Licence.
@@ -24,7 +24,5 @@ import kotlinx.coroutines.flow.Flow
  */
 
 interface SecretsScannerLocalSource {
-    suspend fun scanForSecrets(
-        files: List<ProjectFileEntity>
-    ): Flow<List<ScanResultEntity>>
+    suspend fun scanForSecrets(files: List<ProjectFileEntity>): Flow<List<ScanResultEntity>>
 }

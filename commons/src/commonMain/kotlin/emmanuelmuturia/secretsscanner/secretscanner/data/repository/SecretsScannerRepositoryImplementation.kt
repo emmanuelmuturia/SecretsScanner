@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Sample
+ * Copyright 2025 Secrets Scanner
  *
  * Licenced under the Apache License, Version 2.0 (the "Licence");
  * you may not use this file except in compliance with the Licence.
@@ -35,18 +35,19 @@ class SecretsScannerRepositoryImplementation(
         delay(timeMillis = 700)
         return withContext(context = coroutineDispatcher) {
             secretsScannerLocalSource.scanForSecrets(
-                files = fakeProjectFiles
+                files = fakeProjectFiles,
             )
         }
     }
 }
 
-private val fakeProjectFiles = listOf(
-    ProjectFileEntity(fileName = "config.properties", content = "api_key=AIzaSyXXXX"),
-    ProjectFileEntity(fileName = "MainActivity.kt", content = "val password = \"123456\""),
-    ProjectFileEntity(fileName = "build.gradle", content = "// no secrets here"),
-    ProjectFileEntity(
-        fileName = "secrets.env",
-        content = "AWS_SECRET_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE"
+private val fakeProjectFiles =
+    listOf(
+        ProjectFileEntity(fileName = "config.properties", content = "api_key=AIzaSyXXXX"),
+        ProjectFileEntity(fileName = "MainActivity.kt", content = "val password = \"123456\""),
+        ProjectFileEntity(fileName = "build.gradle", content = "// no secrets here"),
+        ProjectFileEntity(
+            fileName = "secrets.env",
+            content = "AWS_SECRET_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE",
+        ),
     )
-)
