@@ -54,16 +54,6 @@ class SecretsScannerLocalSourceImplementation(
     }
 }
 
-private val fakeProjectFiles = listOf(
-    ProjectFileEntity(fileName = "config.properties", content = "api_key=AIzaSyXXXX"),
-    ProjectFileEntity(fileName = "MainActivity.kt", content = "val password = \"123456\""),
-    ProjectFileEntity(fileName = "build.gradle", content = "// no secrets here"),
-    ProjectFileEntity(
-        fileName = "secrets.env",
-        content = "AWS_SECRET_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE"
-    )
-)
-
 private val secretPatterns = listOf(
     Regex(pattern = "AKIA[0-9A-Z]{16}"),          // AWS Key...
     Regex(pattern = "AIza[0-9A-Za-z-_]{35}"),     // Google API...

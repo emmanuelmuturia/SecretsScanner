@@ -15,8 +15,10 @@
  */
 package emmanuelmuturia.secretsscanner.home.data.repository
 
+import emmanuelmuturia.secretsscanner.home.source.local.entity.ProjectFileEntity
 import emmanuelmuturia.secretsscanner.home.source.local.source.SecretsScannerLocalSource
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 
 /**
  * This is the Home feature's Repository Implementation...
@@ -26,5 +28,21 @@ class SecretsScannerRepositoryImplementation(
     private val coroutineDispatcher: CoroutineDispatcher,
     private val secretsScannerLocalSource: SecretsScannerLocalSource,
 ) : SecretsScannerRepository {
-
+    override suspend fun scanForSecrets() {
+        withContext(context = coroutineDispatcher) {
+            secretsScannerLocalSource.scanForSecrets(
+                files = fakeProjectFiles
+            )
+        }
+    }
 }
+
+private val fakeProjectFiles = listOf(
+    ProjectFileEntity(fileName = "config.properties", content = "api_key=AIzaSyXXXX"),
+    ProjectFileEntity(fileName = "MainActivity.kt", content = "val password = \"123456\""),
+    ProjectFileEntity(fileName = "build.gradle", content = "// no secrets here"),
+    ProjectFileEntity(
+        fileName = "secrets.env",
+        content = "AWS_SECRET_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE"
+    )
+)
