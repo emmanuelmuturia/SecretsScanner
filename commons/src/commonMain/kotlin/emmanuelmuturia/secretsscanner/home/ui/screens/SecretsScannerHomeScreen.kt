@@ -155,7 +155,7 @@ private fun SecretsScannerHomeScreenContent(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 70.dp)
+                .padding(top = 70.dp, start = 14.dp, end = 14.dp)
         ) {
             items(items = secretsScannerHomeScreenUIState.scanResults) { result ->
                 ScanResultItem(scanResult = result)
