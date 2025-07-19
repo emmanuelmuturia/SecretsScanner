@@ -85,7 +85,7 @@ kotlin {
 }
 
 android {
-    namespace = "emmanuelmuturia.sample"
+    namespace = "emmanuelmuturia.secretsscanner"
     compileSdk = 35
     defaultConfig {
         minSdk = 24

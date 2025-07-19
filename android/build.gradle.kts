@@ -22,10 +22,10 @@ plugins {
 }
 
 android {
-    namespace = "emmanuelmuturia.sample.android"
+    namespace = "emmanuelmuturia.secretsscanner.android"
     compileSdk = 35
     defaultConfig {
-        applicationId = "emmanuelmuturia.sample.android"
+        applicationId = "emmanuelmuturia.secretsscanner.android"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
