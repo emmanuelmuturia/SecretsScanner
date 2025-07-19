@@ -1,5 +1,5 @@
 /*
- * Copyright $YEAR Sample
+ * Copyright $YEAR Secrets Scanner
  *
  * Licenced under the Apache License, Version 2.0 (the "Licence");
  * you may not use this file except in compliance with the Licence.

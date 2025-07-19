@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright 2025 Sample, All Rights Reserved.
+     Copyright 2025 Secrets Scanner, All Rights Reserved.
 
      Licensed under the Apache Licence, Version 2.0 (the "Licence");
      you may not use this file except in compliance with the Licence.
@@ -17,9 +17,9 @@
 <resources>
     <style name="Theme.App.SplashScreenTheme" parent="Theme.SplashScreen">
 
-        <item name="windowSplashScreenBackground">#FF121318</item>
+        <item name="windowSplashScreenBackground">#FF1D110B</item>
 
-        <item name="windowSplashScreenAnimatedIcon">@drawable/bookshelf</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
 
         <item name="postSplashScreenTheme">@style/SampleTheme</item>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright 2025 Sample, All Rights Reserved.
+     Copyright 2025 Secrets Scanner, All Rights Reserved.
 
      Licensed under the Apache Licence, Version 2.0 (the "Licence");
      you may not use this file except in compliance with the Licence.
@@ -19,7 +19,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".application.SampleApplication"
+        android:label="Secrets Scanner"
+        android:name=".application.SecretsScannerApplication"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:icon="@mipmap/ic_launcher"
